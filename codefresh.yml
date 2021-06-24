@@ -19,6 +19,7 @@ steps:
     tag: v1.0.1
     dockerfile: Dockerfile
     disable_push: true
+    registry: "mk-github-registry"
   MyUnitTests:
     title: Running Unit tests
     image: '${{MyAppDockerImage}}'
@@ -26,3 +27,8 @@ steps:
     commands: 
       - pip install pytest
       - pytest
+  launch_composition_step:
+      title: "Launch full composition with latest images"
+      type: launch-composition
+      composition: test-composition
+      fail_fast: false
